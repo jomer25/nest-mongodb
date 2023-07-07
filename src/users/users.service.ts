@@ -64,7 +64,7 @@ export class UsersService {
     } 
   }
 
-  async remove(id: string) {
+  async remove(id: string): Promise<void> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException(new ErrorMessageDto('Invalid user ID'));
     }
@@ -78,7 +78,7 @@ export class UsersService {
         throw new NotFoundException(new ErrorMessageDto('User not found'));
       }
 
-      return deleteUser;
+      deleteUser;
     } catch (error) {
       throw new NotFoundException(new ErrorMessageDto(error.message));
     }
